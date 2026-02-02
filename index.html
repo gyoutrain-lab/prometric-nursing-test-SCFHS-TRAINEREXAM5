@@ -2,104 +2,258 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Prometric Trainer Exam – 100 Items</title>
+<title>SCFHS Trainer Certification Exam – Prometric Conversion</title>
 
 <style>
-body { font-family: Arial, sans-serif; background:#f4f6f8; padding:20px; }
-.container { max-width:900px; margin:auto; background:#fff; padding:25px; border-radius:10px; }
-.question { margin-top:25px; padding:20px; border:1px solid #ddd; border-radius:8px; }
-.options label { display:block; margin:6px 0; cursor:pointer; }
-button { margin-top:12px; padding:8px 16px; }
-.feedback { margin-top:12px; padding:12px; border-radius:6px; }
-.correct { background:#e7f6ec; border-left:5px solid #2e8b57; }
-.incorrect { background:#fdecea; border-left:5px solid #c0392b; }
-.hidden { display:none; }
+body{
+  font-family: Arial, sans-serif;
+  background:#f4f6f8;
+  padding:20px;
+}
+.container{
+  max-width:1100px;
+  margin:auto;
+  background:#ffffff;
+  padding:25px;
+  border-radius:8px;
+}
+h1,h2,h3{
+  text-align:center;
+}
+.question{
+  border:1px solid #ddd;
+  padding:15px;
+  margin-bottom:18px;
+  border-radius:6px;
+}
+.options label{
+  display:block;
+  margin:6px 0;
+  cursor:pointer;
+}
+.correct{ color:green; font-weight:bold; }
+.incorrect{ color:red; font-weight:bold; }
+.hidden{ display:none; }
+button{
+  padding:14px 26px;
+  font-size:16px;
+  cursor:pointer;
+}
+.certificate{
+  margin-top:40px;
+  padding:30px;
+  border:6px double #000;
+  text-align:center;
+}
+.autoFail{
+  color:#b30000;
+  font-weight:bold;
+}
 </style>
 </head>
 
 <body>
 <div class="container">
-<h1>Prometric Trainer Certification Exam</h1>
-<p>SCFHS Logic – Sequential Safety Filter</p>
-<hr>
 
-<!-- QUESTIONS 1–100 -->
+<h1>SCFHS Trainer Certification Exam</h1>
+<h3>Prometric Conversion Program</h3>
 
-<!-- Q1 -->
-<div class="question" id="q1">
-<p><strong>Question 1</strong><br>Sample safety-priority question.</p>
-<div class="options">
-<label><input type="radio" name="q1" value="A"> A. Delay action</label>
-<label><input type="radio" name="q1" value="B"> B. Document only</label>
-<label><input type="radio" name="q1" value="C"> C. Immediate safety action</label>
-<label><input type="radio" name="q1" value="D"> D. Wait for order</label>
+<label><strong>Trainer Full Name</strong></label>
+<input type="text" id="trainerName" style="width:100%;padding:10px;font-size:16px;"><br><br>
+
+<form id="examForm"></form>
+
+<button onclick="submitExam()">SUBMIT EXAM</button>
+
+<div id="result" class="hidden"></div>
+<div id="certificate" class="hidden"></div>
+
 </div>
-<button onclick="checkQ1()">Submit</button>
-<div id="q1-feedback" class="feedback hidden"></div>
-</div>
-
-<!-- Q2 -->
-<div class="question hidden" id="q2">
-<p><strong>Question 2</strong><br>Sample safety-priority question.</p>
-<div class="options">
-<label><input type="radio" name="q2" value="A"> A. Unsafe</label>
-<label><input type="radio" name="q2" value="B"> B. Delayed</label>
-<label><input type="radio" name="q2" value="C"> C. Correct safety step</label>
-<label><input type="radio" name="q2" value="D"> D. Outside scope</label>
-</div>
-<button onclick="checkQ2()">Submit</button>
-<div id="q2-feedback" class="feedback hidden"></div>
-</div>
-
-<!-- Q3–Q100 SAME STRUCTURE -->
-<!-- To avoid hiding logic errors, all questions are fully written -->
-
-<!-- I will compress visually, but NOT logically -->
-<!-- You can safely duplicate content text later -->
-
-<!-- START Q3–Q100 -->
-<!-- (Each question differs ONLY by number + name) -->
 
 <script>
-/* ANSWER KEY – ALL SAME LOGIC, CHANGE VALUES LATER */
-const answers = {};
-for(let i=1;i<=100;i++){ answers["q"+i]="C"; }
+const PASS_MARK = 0.85;
 
-function checkGeneric(q,next){
-const c=document.querySelector(`input[name="${q}"]:checked`);
-if(!c)return;
-const fb=document.getElementById(`${q}-feedback`);
-fb.classList.remove("hidden");
-if(c.value===answers[q]){
-fb.className="feedback correct";
-fb.innerHTML="<strong>Correct.</strong> Safe Prometric logic.";
-if(next) document.getElementById(next).classList.remove("hidden");
-}else{
-fb.className="feedback incorrect";
-fb.innerHTML="<strong>Incorrect.</strong> Unsafe or delayed.";
-}
-}
+const questions = [
+{q:"A student asks why oxygen is applied at SpO₂ 84%. What is the ONLY acceptable trainer explanation?",
+o:["Because hypoxia damages organs","Because ABC priority requires airway and breathing first","Because wording implies urgency","Because oxygen improves numbers"],
+a:1, auto:true, r:"ABC safety priority only."},
 
-/* WRAPPER FUNCTIONS Q1–Q100 */
-function checkQ1(){checkGeneric("q1","q2")}
-function checkQ2(){checkGeneric("q2","q3")}
-function checkQ3(){checkGeneric("q3","q4")}
-function checkQ4(){checkGeneric("q4","q5")}
-function checkQ5(){checkGeneric("q5","q6")}
-function checkQ6(){checkGeneric("q6","q7")}
-function checkQ7(){checkGeneric("q7","q8")}
-function checkQ8(){checkGeneric("q8","q9")}
-function checkQ9(){checkGeneric("q9","q10")}
-function checkQ10(){checkGeneric("q10","q11")}
-function checkQ11(){checkGeneric("q11","q12")}
-function checkQ12(){checkGeneric("q12","q13")}
-function checkQ13(){checkGeneric("q13","q14")}
-function checkQ14(){checkGeneric("q14","q15")}
-function checkQ15(){checkGeneric("q15","q16")}
-function checkQ16(){checkGeneric("q16","q17")}
-function checkQ17(){checkGeneric("q17","q18")}
-function checkQ18(){checkGeneric("q18","q19")}
-function checkQ19(){checkGeneric("q19","q20")}
-function checkQ20(){checkGeneric("q20","q21")}
-function checkQ21(){checkGeneric("q21","q22")}
-function
+{q:"Which trainer statement indicates NCLEX contamination?",
+o:["Prevent harm first","Assess ABC immediately","Address the underlying cause","Immediate safety action"],
+a:2, auto:true, r:"Root-cause framing is forbidden."},
+
+{q:"A trainer allows discussion because reasoning 'makes sense'. This is:",
+o:["Adaptive teaching","Encouraging thinking","Minor deviation","Critical authority failure"],
+a:3, auto:true, r:"Answer negotiation invalidates exam authority."},
+
+{q:"Which justification is DISALLOWED?",
+o:["Violates ABC","Delays safety","Sentence tense implies urgency","Not first action"],
+a:2, auto:true, r:"Grammar-based logic is forbidden."},
+
+{q:"Trainer identity that causes AUTO-FAIL:",
+o:["Exam behavior calibrator","Safety logic enforcer","Clinical mentor","Prometric proxy"],
+a:2, auto:true, r:"Clinical mentorship contaminates logic."},
+
+{q:"Why is rationale limited to ≤15 words?",
+o:["Save time","Reduce fatigue","Block explanatory drift","Screen size"],
+a:2, auto:false, r:"Prevents unsafe explanation."},
+
+{q:"Correct response to ESL vocabulary confusion?",
+o:["Explain word","Rephrase question","Redirect to action","Skip item"],
+a:2, auto:false, r:"Action overrides vocabulary."},
+
+{q:"Trainer allows 25-second debate on safety item. Status?",
+o:["Acceptable","Neutral","Risky","Invalid Prometric behavior"],
+a:3, auto:false, r:"Timing discipline required."},
+
+{q:"Pass rate 93%, response time 8s. Correct action?",
+o:["Celebrate","Release cohort","Audit trainer rationale","Increase difficulty"],
+a:2, auto:false, r:"High pass + speed = drift risk."},
+
+{q:"Which phrase is REQUIRED?",
+o:["In many cases","Usually","It depends","The first action must be"],
+a:3, auto:false, r:"Binary safety language required."},
+
+{q:"Trainer explains disease progression. This is:",
+o:["Advanced","Helpful","Unsafe coaching drift","Acceptable if brief"],
+a:2, auto:false, r:"Pathophysiology teaching forbidden."},
+
+{q:"Student asks about doctor preference. Trainer must say:",
+o:["Doctors differ","Follow policy","First action is safety-based","Depends on setting"],
+a:2, auto:false, r:"Provider preference irrelevant."},
+
+{q:"Which action preserves exam validity?",
+o:["Allow debate","Encourage reasoning","Enforce answer within 5 seconds","Explain later"],
+a:2, auto:false, r:"Behavioral enforcement required."},
+
+{q:"Trainer says, “You’ll see this in real life.” This is:",
+o:["Motivational","Contextual","Authority contamination","Harmless"],
+a:2, auto:false, r:"Real-life framing overrides exam logic."},
+
+{q:"Which trainer behavior is FORBIDDEN?",
+o:["Redirecting to action","Stopping discussion","Explaining vocabulary","Enforcing timing"],
+a:2, auto:true, r:"ESL vocabulary coaching forbidden."},
+
+{q:"Correct answer chosen for wrong reason. Trainer should:",
+o:["Accept it","Praise logic","Mark incorrect","Discuss alternatives"],
+a:2, auto:false, r:"Reasoning must match safety logic."},
+
+{q:"Trainer says, “This is common sense.” This is:",
+o:["Encouraging","Neutral","Invalid rationale","Helpful"],
+a:2, auto:false, r:"Common sense is not exam logic."},
+
+{q:"Which metric signals coaching drift?",
+o:["Low pass","High ESL errors","High pass + low response time","Long exams"],
+a:2, auto:false, r:"Speed + success = over-coaching."},
+
+{q:"Trainer explains grammar tense. Result?",
+o:["Minor error","Coachable","AUTO-FAIL","ESL support"],
+a:2, auto:true, r:"Grammar logic disqualifies."},
+
+{q:"Trainer role during drills is:",
+o:["Facilitator","Mentor","Authority enforcer","Clinical guide"],
+a:2, auto:false, r:"Authority enforcement required."},
+
+{q:"Which phrase must be corrected?",
+o:["Immediate safety","First action","Address cause","Assess airway"],
+a:2, auto:false, r:"Cause-seeking delays safety."},
+
+{q:"Allowing partial credit is:",
+o:["Fair","Educational","Unsafe","Supportive"],
+a:2, auto:false, r:"Binary decisions only."},
+
+{q:"Which habit causes score inflation?",
+o:["Strict timing","Answer locking","Explaining distractors","Silent correction"],
+a:2, auto:false, r:"Distractor explanation trains guessing."},
+
+{q:"Trainer references NCLEX. Result?",
+o:["Helpful","Clarifying","AUTO-FAIL","Minor issue"],
+a:2, auto:true, r:"NCLEX contamination detected."},
+
+{q:"Trainer goal is to:",
+o:["Increase understanding","Build confidence","Enforce safe decisions","Explain answers"],
+a:2, auto:false, r:"Decision behavior is target."},
+
+{q:"Keyword memorization coaching is:",
+o:["Efficient","Strategic","Forbidden","Helpful"],
+a:2, auto:true, r:"Keywords bypass reasoning."},
+
+{q:"Phrase never allowed:",
+o:["Immediate action","Unsafe delay","It depends","First priority"],
+a:2, auto:true, r:"Conditional logic forbidden."},
+
+{q:"Guessing strategy coaching is:",
+o:["Helpful","Strategic","AUTO-FAIL","Efficient"],
+a:2, auto:true, r:"Guessing undermines screening."},
+
+{q:"Final responsibility of trainer:",
+o:["Teach content","Motivate","Prevent unsafe release","Explain answers"],
+a:2, auto:false, r:"Release control is core duty."}
+];
+
+const form = document.getElementById("examForm");
+
+questions.forEach((item,i)=>{
+  const div=document.createElement("div");
+  div.className="question";
+  div.innerHTML=`<strong>Q${i+1}${item.auto?" <span class='autoFail'>(AUTO-FAIL)</span>":""}</strong><br>${item.q}`;
+  const opts=document.createElement("div");
+  opts.className="options";
+  item.o.forEach((opt,j)=>{
+    opts.innerHTML+=`<label><input type="radio" name="q${i}" value="${j}"> ${opt}</label>`;
+  });
+  div.appendChild(opts);
+  form.appendChild(div);
+});
+
+function submitExam(){
+  const name=document.getElementById("trainerName").value.trim();
+  if(!name){ alert("Enter trainer name"); return; }
+
+  let correct=0;
+  let autoFail=false;
+  let output="<h2>Exam Result</h2>";
+
+  questions.forEach((q,i)=>{
+    const ans=document.querySelector(`input[name="q${i}"]:checked`);
+    if(!ans){
+      output+=`<p class="incorrect">Q${i+1}: Not answered</p>`;
+      if(q.auto) autoFail=true;
+      return;
+    }
+    if(parseInt(ans.value)===q.a){
+      correct++;
+      output+=`<p class="correct">Q${i+1}: Correct<br>Rationale: ${q.r}</p>`;
+    } else {
+      output+=`<p class="incorrect">Q${i+1}: Incorrect<br>Rationale: ${q.r}</p>`;
+      if(q.auto) autoFail=true;
+    }
+  });
+
+  const score=correct/questions.length;
+  const pass=(score>=PASS_MARK && !autoFail);
+
+  output+=`<h3>Score: ${(score*100).toFixed(1)}%</h3>`;
+  output+=`<h2>${pass?"PASS":"FAIL"}</h2>`;
+
+  document.getElementById("result").innerHTML=output;
+  document.getElementById("result").classList.remove("hidden");
+
+  if(pass){
+    document.getElementById("certificate").innerHTML=`
+      <div class="certificate">
+        <h2>CERTIFICATE OF COMPLETION</h2>
+        <p>This certifies that</p>
+        <h1>${name}</h1>
+        <p>has successfully passed the</p>
+        <h3>SCFHS Trainer Certification Exam</h3>
+        <p>Prometric Conversion Program</p>
+        <p><strong>Validity:</strong> 6 Months</p>
+      </div>`;
+    document.getElementById("certificate").classList.remove("hidden");
+  }
+}
+</script>
+
+</body>
+</html>
